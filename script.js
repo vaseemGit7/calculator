@@ -1,6 +1,23 @@
-let a = parseInt(prompt("Enter the first number"));
-let operator = prompt("Enter the operator");
-let b = parseInt(prompt("Enter the second number"));
+let firstOperand ="";
+let secondOperand="";
+let operator = null;
+
+const display = document.getElementById("displayScreen");
+//console.log(display.textContent);
+const numbers = document.querySelectorAll(".number");
+
+numbers.forEach((number) => {number.addEventListener('click',()=>appendNumber(number.textContent))});
+
+
+function appendNumber(number){
+    //if(displayScreen.textContent === "0")resetDisplay();
+    display.textContent = number;
+    console.log('called');
+}    
+
+function resetDisplay(){
+    display.textContent = "";
+}
 
 function add(a,b){
     return a+b;
@@ -21,7 +38,7 @@ function divide(a,b){
 function operate(a,b,operator){
     if(operator === "+"){
        return add(a,b);
-    }
+    }   
     else if(operator === "-"){
         return subtract(a,b);
     }
@@ -32,5 +49,3 @@ function operate(a,b,operator){
         return divide(a,b);
     }
 }
-
-console.log(operate(a,b,operator));

@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <script src="./script.js"></script>
+    <script defer src="./script.js"></script>
     <title>Calculator</title>
 </head>
 <body>
     <div class="base-section">
-        <div class="display-section">00</div>
+        <div class="display-section">
+            <div class="display" id="displayScreen">0</div>
+        </div>
         <div class="buttons-section">
+            <!--operators-->
             <button class="all-clear" id="allClearBtn">AC</button>
             <button class="clear" id="clearBtn">C</button>
             <button class="divide" id="divideBtn">÷</button>
@@ -19,17 +22,18 @@
             <button class="subtract" id="subtractBtn">-</button>
             <button class="addition" id="addBtn">+</button>
             <button class="equal" id="equalBtn">=</button>
-            <button class="seven" id="sevenBtn">7</button>
-            <button class="eight" id="eigthBtn">8</button>
-            <button class="nine" id="nineBtn">9</button>
-            <button class="four" id="fourBtn">4</button>
-            <button class="five" id="fiveBtn">5</button>
-            <button class="six" id="sixBtn">6</button>
-            <button class="one" id="oneBtn">1</button>
-            <button class="two" id="twoBtn">2</button>
-            <button class="three" id="threeBtn">3</button>
-            <button class="zero" id="zeroBtn">0</button>
-            <button class="dot" id="dotButton">.</button>
+            <button class="decimal" id="decimalBtn">.</button>
+            <!--numbers-->
+            <button class="seven number" id="sevenBtn">7</button>
+            <button class="eight number" id="eigthBtn">8</button>
+            <button class="nine number" id="nineBtn">9</button>
+            <button class="four number" id="fourBtn">4</button>
+            <button class="five number" id="fiveBtn">5</button>
+            <button class="six number" id="sixBtn">6</button>
+            <button class="one number" id="oneBtn">1</button>
+            <button class="two number" id="twoBtn">2</button>
+            <button class="three number" id="threeBtn">3</button>
+            <button class="zero number" id="zeroBtn">0</button>
         </div>
     </div>
 </body>
