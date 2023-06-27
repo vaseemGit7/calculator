@@ -22,17 +22,20 @@ function appendNumber(number){
 }   
 
 function setOperator(symbol){
+    if(operator!==null) evaluate();
+    console.log("before:"+operator);
     firstOperand = display.textContent;
     operator = symbol;
-    console.log(operator);
+    console.log("after:"+operator);
     shouldResetDisplay = true;
 }
 
 function evaluate(){
     secondOperand = display.textContent;
     let result = operate(firstOperand,secondOperand,operator);
-    console.log(result);
     display.textContent = result;
+    operator = null;
+    console.log(result);
 }
 
 function resetDisplay(){
