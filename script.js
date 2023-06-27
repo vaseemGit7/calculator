@@ -39,6 +39,7 @@ function addDecimal(){
 }
 
 function evaluate(){
+    if((operator === null) || shouldResetDisplay) return;
     secondOperand = display.textContent;
     let result = operate(firstOperand,secondOperand,operator);
     display.textContent = result;
@@ -66,6 +67,11 @@ function operate(a,b,operator){
        return a*b;
     }
     else if(operator === "÷"){
-        return a/b;
+        if(b==0){
+            return "Error";
+        }
+        else{
+            return a/b;
+        }
     }
 }
