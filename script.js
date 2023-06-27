@@ -8,13 +8,14 @@ const operators = document.querySelectorAll(".operator");
 const numbers = document.querySelectorAll(".number");
 const equalBtn =  document.getElementById("equalBtn");
 const clear = document.getElementById("clearBtn");
-const allClear = document.getElementById("allClearBtn");
+const allClearBtn = document.getElementById("allClearBtn");
 const decimalBtn = document.getElementById("decimalBtn");
 
 operators.forEach((operator)=>{operator.addEventListener('click',()=>setOperator(operator.textContent))});
 numbers.forEach((number) => {number.addEventListener('click',()=>appendNumber(number.textContent))});
 equalBtn.addEventListener('click',evaluate);
 decimalBtn.addEventListener('click',addDecimal);
+allClearBtn.addEventListener('click',clearAll);
 
 function appendNumber(number){
     if(displayScreen.textContent === "0"||shouldResetDisplay==true){
@@ -50,6 +51,14 @@ function evaluate(){
 function resetDisplay(){
     display.textContent = "";
     console.log("reset called!");
+}
+
+function clearAll(){
+    firstOperand ="";
+    secondOperand="";
+    operator = null;
+    shouldResetDisplay = false;
+    display.textContent ="0";
 }
 
 function operate(a,b,operator){
