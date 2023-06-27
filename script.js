@@ -9,25 +9,33 @@ const numbers = document.querySelectorAll(".number");
 const equalBtn =  document.getElementById("equalBtn");
 const clear = document.getElementById("clearBtn");
 const allClear = document.getElementById("allClearBtn");
+const decimalBtn = document.getElementById("decimalBtn");
 
-operators.forEach((operator)=>{operator.addEventListener('click',()=>setOperator(operator.textContent))})
+operators.forEach((operator)=>{operator.addEventListener('click',()=>setOperator(operator.textContent))});
 numbers.forEach((number) => {number.addEventListener('click',()=>appendNumber(number.textContent))});
-equalBtn.addEventListener('click',evaluate)
+equalBtn.addEventListener('click',evaluate);
+decimalBtn.addEventListener('click',addDecimal);
 
 function appendNumber(number){
     if(displayScreen.textContent === "0"||shouldResetDisplay==true){
         resetDisplay();
     }
     display.textContent += number;
+    console.log("reset called from append number")
+    shouldResetDisplay = false;
 }   
 
 function setOperator(symbol){
     if(operator!==null) evaluate();
-    console.log("before:"+operator);
     firstOperand = display.textContent;
     operator = symbol;
-    console.log("after:"+operator);
     shouldResetDisplay = true;
+}
+
+function addDecimal(){
+    if(!display.textContent.match(/^\d*\.\d*$/)){
+        display.textContent +="."
+    }
 }
 
 function evaluate(){
@@ -40,6 +48,7 @@ function evaluate(){
 
 function resetDisplay(){
     display.textContent = "";
+    console.log("reset called!");
 }
 
 function operate(a,b,operator){
