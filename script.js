@@ -11,12 +11,13 @@ const clearBtn = document.getElementById("clearBtn");
 const allClearBtn = document.getElementById("allClearBtn");
 const decimalBtn = document.getElementById("decimalBtn");
 
+window.addEventListener('keydown',keyBoardInput);
 operators.forEach((operator)=>{operator.addEventListener('click',()=>setOperator(operator.textContent))});
 numbers.forEach((number) => {number.addEventListener('click',()=>appendNumber(number.textContent))});
 equalBtn.addEventListener('click',evaluate);
 decimalBtn.addEventListener('click',addDecimal);
 allClearBtn.addEventListener('click',clearAll);
-clearBtn.addEventListener('click',clearDigit)
+clearBtn.addEventListener('click',clearDigit);
 
 function appendNumber(number){
     if(displayScreen.textContent === "0"||shouldResetDisplay==true){
@@ -74,7 +75,7 @@ function operate(a,b,operator){
     if(operator === "+"){
        return a+b;
     }   
-    else if(operator === "-"){
+    else if(operator === "−"){
         return a-b;
     }
     else if(operator === "×"){
@@ -91,4 +92,21 @@ function operate(a,b,operator){
     else if(operator === "mod"){
         return a%b;
     }
+}
+
+function keyBoardInput(e){
+    if(e.key>=0 && e.key<=9) appendNumber(e.key);
+    if(e.key === "Escape") clearAll();
+    if(e.key === "Backspace") clearDigit();
+    if(e.key === "Enter") evaluate();
+    if(e.key === ".") addDecimal();
+    if(e.key === "+" || e.key === "-" || e.key === "*" || e.key === "/" || e.key === "%") setOperator(convertSymbols(e.key))
+}
+
+function convertSymbols(e){
+    if (e ==="-") return "−";
+    if (e ==="+") return "+";
+    if (e ==="/") return "÷";
+    if (e ==="*") return "×";
+    if (e ==="%") return "mod";
 }
