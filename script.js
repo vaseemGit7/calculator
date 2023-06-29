@@ -7,7 +7,7 @@ const display = document.getElementById("displayScreen");
 const operators = document.querySelectorAll(".operator");
 const numbers = document.querySelectorAll(".number");
 const equalBtn =  document.getElementById("equalBtn");
-const clear = document.getElementById("clearBtn");
+const clearBtn = document.getElementById("clearBtn");
 const allClearBtn = document.getElementById("allClearBtn");
 const decimalBtn = document.getElementById("decimalBtn");
 
@@ -16,6 +16,7 @@ numbers.forEach((number) => {number.addEventListener('click',()=>appendNumber(nu
 equalBtn.addEventListener('click',evaluate);
 decimalBtn.addEventListener('click',addDecimal);
 allClearBtn.addEventListener('click',clearAll);
+clearBtn.addEventListener('click',clearDigit)
 
 function appendNumber(number){
     if(displayScreen.textContent === "0"||shouldResetDisplay==true){
@@ -61,6 +62,10 @@ function clearAll(){
     display.textContent ="0";
 }
 
+function clearDigit(){
+    display.textContent = display.textContent.toString().slice(0,-1);
+}
+
 function operate(a,b,operator){
 
     a=Number(a);
@@ -82,5 +87,8 @@ function operate(a,b,operator){
         else{
             return a/b;
         }
+    }
+    else if(operator === "mod"){
+        return a%b;
     }
 }
