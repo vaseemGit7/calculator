@@ -119,3 +119,15 @@ main{
     flex-shrink: 0;
     grid-column: 1 / span 2;
 }
+
+.operator:hover, .all-clear:hover, .clear:hover, .equal:hover{
+    background-color: #cb6913;
+}
+
+.number:hover{
+    background-color: #c1c1c5;
+}
+
+button:active{
+    transform: scale(0.98);
+}
