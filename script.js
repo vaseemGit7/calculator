@@ -12,8 +12,8 @@ const allClearBtn = document.getElementById("allClearBtn");
 const decimalBtn = document.getElementById("decimalBtn");
 
 window.addEventListener('keydown',keyBoardInput);
-operators.forEach((operator)=>{operator.addEventListener('click',()=>setOperator(operator.textContent))});
-numbers.forEach((number) => {number.addEventListener('click',()=>appendNumber(number.textContent))});
+operators.forEach((operator)=>{operator.addEventListener('click',()=>setOperator(operator.firstElementChild.textContent))});
+numbers.forEach((number) => {number.addEventListener('click',()=>appendNumber(number.firstElementChild.textContent))});
 equalBtn.addEventListener('click',evaluate);
 decimalBtn.addEventListener('click',addDecimal);
 allClearBtn.addEventListener('click',clearAll);
